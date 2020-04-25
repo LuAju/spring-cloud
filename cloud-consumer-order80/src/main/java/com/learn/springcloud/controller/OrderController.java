@@ -31,7 +31,8 @@ import javax.annotation.Resource;
 @RestController
 @Slf4j
 public class OrderController {
-    private static final String URL = "http://localhost:8001";
+    // 修改服务的名称，不再使用ip地址，改用服务名称
+    private static final String URL = "http://CLOUD-PAYMENT-SERVICE";
 
     @Resource
     private RestTemplate restTemplate;
