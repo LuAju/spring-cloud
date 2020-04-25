@@ -2,8 +2,9 @@
 
 修改了hoss的路径信息 以达到模拟集群的特点
 
-###springcloud
-127.0.0.1 eureka7001.com
+###springcloud  
+
+127.0.0.1 eureka7001.com  
 127.0.0.1 eureka7002.com
 
 
