@@ -4,6 +4,7 @@ import com.learn.springcloud.entities.CommonResult;
 import com.learn.springcloud.entities.Payment;
 import com.learn.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -30,12 +31,15 @@ public class PaymentController {
     @Resource
     private PaymentService paymentService;
 
+    @Value("${server.port}")
+    private String serverPort;
+
     @PostMapping(value = "/payment/create")
     public CommonResult create(@RequestBody Payment payment){
         int result = paymentService.create(payment);
         log.info("****插入日志："+result);
         if (result>0) {
-            return new CommonResult(200, "success", result);
+            return new CommonResult(200, "success,serverPort"+serverPort, result);
         } else {
             return new CommonResult(200, "failed", null);
         }
@@ -46,7 +50,7 @@ public class PaymentController {
         Payment payment = paymentService.getPaymentById(id);
         System.out.println("sqqs");
         if (payment!=null) {
-            return new CommonResult(200, "查询成功了m ", payment);
+            return new CommonResult(200, "查询成功了m "+serverPort, payment);
         } else {
             return new CommonResult(200, "没有对应记录", null);
         }
