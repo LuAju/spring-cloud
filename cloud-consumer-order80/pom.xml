@@ -29,7 +29,11 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
-
+        <!-- eureka 客户端-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
 
 
         <!--热部署-->
