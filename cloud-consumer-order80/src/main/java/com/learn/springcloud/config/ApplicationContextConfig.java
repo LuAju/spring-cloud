@@ -1,5 +1,6 @@
 package com.learn.springcloud.config;
 
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class ApplicationContextConfig {
     @Bean
+    @LoadBalanced // 添加负载均衡功能，通过微服务的名称添加服务功能，不再使用地址的方式
     public RestTemplate getRestTemplate(){
         return new RestTemplate();
     }
