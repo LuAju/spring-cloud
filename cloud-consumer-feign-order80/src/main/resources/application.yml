@@ -1,0 +1,20 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-order-service
+
+eureka:
+  client:
+    # 是否将自己注册进Eureka Server默认为true
+    register-with-eureka: true
+    # 表示是否从Eureka Server抓取已注册信息，默认为true。单节点无所谓，集群必须设置为true。
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7002.com:7002/eureka,http://eureka7001.com:7001/eureka
+
+# Feign默认只等待1s中，可以在这里添加参数，延迟等待时间。
+ribbon:
+  ReadTimeout: 50000
+  ConnectTimeout: 50000
