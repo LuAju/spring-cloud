@@ -18,3 +18,8 @@ eureka:
 ribbon:
   ReadTimeout: 50000
   ConnectTimeout: 50000
+
+# 开启hystrix
+feign:
+  hystrix:
+    enabled: true
