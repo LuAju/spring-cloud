@@ -14,7 +14,7 @@ public interface PaymentFeignService {
     // 去指定微服务中相应的接口（controller）
     CommonResult<Payment> getPaymentById(@PathVariable("id") Long id);
 
-
     @GetMapping("/payment/timeout")
     String timeout();
+
 }

@@ -55,4 +55,15 @@ public class PaymentController {
             return new CommonResult(200, "没有对应记录", null);
         }
     }
+
+    @GetMapping("/payment/timeout")
+    public String timeout(){
+        // 测试超时
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "okay";
+    }
 }

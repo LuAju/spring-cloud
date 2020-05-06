@@ -74,4 +74,17 @@ public class PaymentController {
         }
         return this.discoveryClient;
     }
+
+
+    @GetMapping("/payment/timeout")
+    public String timeout(){
+        // 测试超时
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "okay";
+    }
+
 }
