@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.concurrent.TimeUnit;
 
 @Component
-@FeignClient(value = "CLOUD-HYSTRIX-PAYMENT-SERVICE")
+// 添加该接口的默认fallback类
+@FeignClient(value = "CLOUD-HYSTRIX-PAYMENT-SERVICE",fallback = PaymentHystrixFallBack.class)
 public interface PaymentHystrixService {
     @GetMapping("payment/hystrix/ok/{id}")
     public String paymentInfo_OK(@PathVariable("id") Integer id);
