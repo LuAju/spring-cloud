@@ -18,8 +18,16 @@ spring:
     name: cloud-gateway
   cloud:
     gateway:
+      discovery:
+        locator:
+          # 从路由中心开启路由
+          enabled: true
       routes:
         - id: payment_route
-          uri: http://localhost:8001
+#          uri: http://localhost:8001
+          # 地址替换成服务名
+          uri: lb://cloud-payment-service
           predicates:
-            - Path=/payment/get/**
+            - Path=/payment/get/**   # 断言： 路径匹配才能访问
+            - After=2020-05-09T22:45:49.859+08:00[Asia/Shanghai] # 断言 请求位于这个时间后
+            # Cookie 需要两个参数，一个是cookie name，一个是正则表达式
