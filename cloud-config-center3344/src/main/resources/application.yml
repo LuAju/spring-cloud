@@ -1,0 +1,25 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: cloud-config
+  cloud:
+    config:
+      server:
+        git:
+          # 配置文件路径
+          uri: https://github.com/LuAju/spring-cloud.git
+#          search-paths:
+#           - spring-cloud
+          # 锁在分支
+          default-label: master
+#            - config
+
+eureka:
+  client:
+    # 是否将自己注册进Eureka Server默认为true
+    register-with-eureka: true
+    # 表示是否从Eureka Server抓取已注册信息，默认为true。单节点无所谓，集群必须设置为true。
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7002.com:7002/eureka,http://eureka7001.com:7001/eureka
