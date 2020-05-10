@@ -28,4 +28,11 @@ public class PaymentController {
         log.info(result);
         return result;
     }
+
+    @GetMapping("payment/circuitBreaker/{id}")
+    public String circuitBreaker (@PathVariable("id") Integer id) {
+        String result = paymentService.paymentCircuitBreaker(id);
+        log.info(result);
+        return result;
+    }
 }
