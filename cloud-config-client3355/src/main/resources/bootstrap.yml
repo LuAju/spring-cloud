@@ -1,0 +1,29 @@
+# bootstrap 从外部加载资源，优先级更高
+server:
+  port: 3355
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: master
+      name: config
+      profile: dev
+      uri: http://localhost:3344
+
+eureka:
+  client:
+    # 是否将自己注册进Eureka Server默认为true
+    register-with-eureka: true
+    # 表示是否从Eureka Server抓取已注册信息，默认为true。单节点无所谓，集群必须设置为true。
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7002.com:7002/eureka,http://eureka7001.com:7001/eureka
+
+# 暴露监控端口，实现 动态获悉配置文件的变化
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
